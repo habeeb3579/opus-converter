@@ -21,6 +21,7 @@ def readOpusFiles(files):
         logging.debug(datablocks)
         ab_count = [datablock for datablock in datablocks if datablock[0]=='AB']
         if ab_count != []:
+        # I have edited this to avoid generation of duplicates.
         #for datablock in datablocks:
         #    if datablock[0] == 'AB':
              data = opusFC.getOpusData(f, datablock)
