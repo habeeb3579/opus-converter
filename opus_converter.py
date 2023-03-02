@@ -19,11 +19,13 @@ def readOpusFiles(files):
     for f in files:
         datablocks = opusFC.listContents(f)
         logging.debug(datablocks)
-        for datablock in datablocks:
-            if datablock[0] == 'AB':
-                data = opusFC.getOpusData(f, datablock)
-                wavenumbers.append(data.x)
-                values.append(data.y)
+        ab_count = [datablock for datablock in datablocks if datablock[0]=='AB']
+        if ab_count != []:
+        #for datablock in datablocks:
+        #    if datablock[0] == 'AB':
+             data = opusFC.getOpusData(f, datablock)
+             wavenumbers.append(data.x)
+             values.append(data.y)
 
     wavenumbers = np.array(wavenumbers)
     assert np.all(wavenumbers == wavenumbers[0]), \
